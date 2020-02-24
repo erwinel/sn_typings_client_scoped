@@ -36,6 +36,11 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="base.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
     <VisualStudio>
