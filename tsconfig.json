@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "none",
+    "target": "es6",
+    "lib": [ "es6", "DOM" ],
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.js"
+  ]
+}
