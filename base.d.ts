@@ -1,5 +1,3 @@
-/// <reference path="node_modules/@ryancavanaugh/jquery/index.d.ts" />
-
 declare type StringQueryOperator = "=" | "!=" | "IN" | "NOT IN" | "STARTSWITH" | "ENDSWITH" | "CONTAINS" | "DOES NOT CONTAIN" | "INSTANCEOF";
 declare type NumberQueryOperator = "=" | "!=" | ">" | ">=" | "<" | "<=";
 declare type QueryOperator = StringQueryOperator | NumberQueryOperator;
@@ -1381,7 +1379,7 @@ declare class GlideAjax {
     getProcessor(): string;
     getURL(): string;
     getJSON<T>(callback: GlideAjaxResultCallback<T>): void;
-    getXML(callback: GlideAjaxResultCallback<JQuery.JQueryXHR>): void;
+    getXML(callback: GlideAjaxResultCallback<JQueryXHR>): void;
     getXMLAnswer(callback: GlideAjaxResultCallback<Element>, thisObj?: any, p1?: any);
     getXMLWait(): void;
     setErrorCallback(callback: Function): void;

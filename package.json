@@ -11,6 +11,8 @@
     "clean": "tsc --build --clean"
   },
   "devDependencies": {
+    "@types/angularjs": "^1.5.14-alpha",
+    "@types/jquery": "^3.3.33",
     "@types/node": "^8.10.59",
     "typescript": "^3.2.2"
   }
