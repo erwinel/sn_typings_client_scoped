@@ -1,3 +1,24 @@
+/* ServiceNow Resource: /scripts/doctype/js_includes_doctype.js */
+
+/* ServiceNow Resource: /scripts/doctype/functions_bootstrap14.js */
+
+declare var userAgentLowerCase: boolean;
+declare var isMSIE: boolean;
+declare var ie5: boolean;
+declare var isMSIE6: boolean;
+declare var isMSIE7: boolean;
+declare var isMSIE8: boolean;
+declare var isMSIE9: boolean;
+declare var isMSIE10: boolean;
+declare var isMSIE11: boolean;
+declare var isChrome: boolean;
+declare var isFirefox: boolean;
+declare var isSafari: boolean;
+declare var isSafari5: boolean;
+declare var isMacintosh: boolean;
+declare var isWebKit: boolean;
+declare var isTouchDevice: boolean;
+
 /**
  * Add listener for top window render event.
  *
@@ -30,30 +51,37 @@ declare function getNavWindow(): Window;
  * @param {Date} [dateTime] The date/time of the event.
  */
 declare function jslog(msg: any, src?: string, dateTime?: Date): void;
-/**
- * Evaluates a script.
- *
- * @param {string} s The script to evaluate.
- * @param {boolean} [evalGlobal] If true, this evaluated globally (on the top window).
- * @returns {*} The return value of the script evaluation.
- */
-declare function evalScript(s: string, evalGlobal?: boolean): any;
 declare function htmlEscape(s: string): string;
 declare function htmlEscapeQuote(s: string): string;
 declare function htmlEscapeDoubleQuote(s: string): string;
 declare function trim(s: string): string;
 declare function hide(element: string | Element): void;
 declare function show(element: string | Element): void;
-declare function isHex(num: string): boolean;
+
+/* ServiceNow Resource: /scripts/lib/glide_updates/prototype.js */
+
+/**
+ * Evaluates a script.
+ *
+ * @param {string} s The script to evaluate.
+ * @param {boolean} [evalGlobal] If true, this evaluated globally (on the top window).
+ * @returns {*} The return value of the script evaluation.
+ * @description ServiceNow Resource: /scripts/lib/glide_updates/prototype.js
+ */
+declare function evalScript(s: string, evalGlobal?: boolean): any;
+
+/* ServiceNow Resource: /scripts/functions/xmlhttp.js */
+declare var isMicrosoftXMLHTTP: boolean;
+
+/* ServiceNow Resource: /scripts/functions_email.js */
 declare function isEmailValid(value: string): boolean;
 declare function isEmailValidWithReason(value: string): string;
-declare function formatCurrency(num: number | string): string;
-declare function formatNumber(num: number | string): string;
-declare function formatCents(amount: number | string): string;
-declare function formatDollar(amount: number | string): string;
-declare function padLeft(value: any, width: number, fill: string): string;
-declare function getDecimalSeparator(): string;
-declare function getGroupingSeparator(): string;
+
+/* ServiceNow Resource: /scripts/doctype/functions.js */
+declare function isHex(num: string): boolean;
+declare function getActiveUser(): GlideUser;
+
+/* ServiceNow Resource: /scripts/doctype/utils14.js */
 declare function doubleDigitFormat(amount: number | string): string;
 declare function tripleDigitFormat(amount: number | string): string;
 declare function isNumber(test: any): boolean;
@@ -70,6 +98,17 @@ declare function getBrowserWindowHeight(): number;
 declare function getBrowserWindowWidth(): number;
 declare function WindowSize(): { width: number; height: number; };
 declare function getScrollBarWidthPx(): number;
+
+/* ServiceNow Resource: /scripts/formatting.js */
+declare function formatCurrency(num: number | string): string;
+declare function formatNumber(num: number | string): string;
+declare function formatCents(amount: number | string): string;
+declare function formatDollar(amount: number | string): string;
+declare function padLeft(value: any, width: number, fill: string): string;
+declare function getDecimalSeparator(): string;
+declare function getGroupingSeparator(): string;
+
+/* ServiceNow Resource: /scripts/calendar.js */
 declare function getDateFromFormat(val: any, format: string): Date;
 declare function parseDate(val: any): Date | null;
 declare function compareDates(date1: any, dateformat1: string, date2: any, dateformat2: string): number;
@@ -78,11 +117,11 @@ declare function getDurationString(ms: number): string;
 declare function getUserDateTime(): Date;
 declare function convertUtcTimeToUserTimeMs(utcTimeMs: number): number;
 declare function convertUserTimeToUtcTimeMs(utcTimeMs: number): number;
-declare function getActiveUser(): GlideUser;
 
 /**
  * API for database operations.
  * @class GlideRecord
+ * ServiceNow Resource: /scripts/classes/GlideRecord.js
  */
 declare class GlideRecord {
     /**
@@ -234,6 +273,7 @@ declare type GlideFormFieldMessageType = "error" | "info" | "warning";
  * Provides methods to customize forms.
  * @interface GlideForm
  * @description This is typically accesed through the variable g_form.
+ * ServiceNow Resource: /scripts/classes/GlideForm.js
 */
 declare abstract class GlideForm {
     /**
@@ -628,6 +668,7 @@ declare abstract class GlideForm {
 /**
  * Provides access to information about the current user and current user roles.
  * @interface GlideUser
+ * @description ServiceNow Resource: /scripts/classes/GlideForm.js
  */
 declare class GlideUser {
     /**
@@ -699,11 +740,6 @@ declare class GlideUser {
      */
     hasRoles(includeDefaults?: boolean): boolean;
 }
-
-/**
- * The current user.
- */
-declare var g_user: GlideUser;
 
 /**
  * GlideDialogWindow API - Provides methods for displaying a dialog in the current window and frame.
@@ -845,23 +881,6 @@ declare var GlideEvent: {
     NAV_PANE_CLICKED: 'glide:nav_window_clicked'
 };
 
-declare var userAgentLowerCase: boolean;
-declare var isMSIE: boolean;
-declare var ie5: boolean;
-declare var isMSIE6: boolean;
-declare var isMSIE7: boolean;
-declare var isMSIE8: boolean;
-declare var isMSIE9: boolean;
-declare var isMSIE10: boolean;
-declare var isMSIE11: boolean;
-declare var isChrome: boolean;
-declare var isFirefox: boolean;
-declare var isSafari: boolean;
-declare var isSafari5: boolean;
-declare var isMacintosh: boolean;
-declare var isWebKit: boolean;
-declare var isTouchDevice: boolean;
-declare var isMicrosoftXMLHTTP: boolean;
 
 declare class GwtObservable {
     constructor();
