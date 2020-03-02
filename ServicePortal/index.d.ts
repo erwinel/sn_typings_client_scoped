@@ -1,2 +1,2 @@
 /// <reference path="../index.d.ts" />
-/// <reference path="spUtil.ts" />
+/// <reference path="spUtil.d.ts" />

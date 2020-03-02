@@ -53,7 +53,7 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ServicePortal\index.d.ts" />
-    <TypeScriptCompile Include="ServicePortal\spUtil.ts">
+    <TypeScriptCompile Include="ServicePortal\spUtil.d.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
