@@ -12,4 +12,4 @@ declare class GlideNavigation {
     addUserHistoryEntry(title: string, relativePath: string, description: string, isTable: boolean): void;
 }
 
-declare var g_form: GlideForm | null | undefined;
+declare var g_form: GlideForm;
