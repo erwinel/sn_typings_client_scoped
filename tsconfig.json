@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": true,
     "module": "none",
     "target": "es6",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": false,
     "lib": [ "es6", "DOM" ]
   },
   "exclude": [

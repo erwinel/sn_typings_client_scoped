@@ -265,6 +265,7 @@ declare class GlideRecord {
 //type GlideRecordConstructor = (new (tableName: string) => GlideRecord);
 
 declare type GlideAjaxResultCallback<T> = Function & { (result: T): void; };
+declare type GlideAjaxAnswerCallback<T> = Function & { (result: string, responseParam?: T): void; };
 declare type GetGlideRecordCallback<T extends GlideRecord> = Function & { (gr: T): void; };
 
 declare type GlideFormFieldMessageType = "error" | "info" | "warning";
@@ -1067,21 +1068,53 @@ declare class GlideUIElement {
 }
 
 declare class GlideURL {
+    /**
+     * Creates an instance of GlideURL.
+     * @param {string} [contextPath] - A relative path for the URL.
+     * @memberof GlideURL
+     */
     constructor(contextPath?: string);
+
     setFromCurrent(): void;
-    setFromString(href): void;
+    
+    setFromString(href: string): void;
+    
     getContexPath(): string;
+    
     getContextPath(): string;
-    setContextPath(c): void;
-    getParam(p: string): string;
-    getParams(): { [key: string]: string; }
-    addParam(name, value): GlideURL;
+    
+    setContextPath(c: string): void;
+    
+    getParam(name: string): string;
+    
+    getParams(): { [key: string]: string };
+    
+    /**
+     * Adds a query string name-value pair to the URL.
+     * @param {string} name - Name of the query string parameter.
+     * @param {string} value - Query string value.
+     * @memberof GlideURL
+     */
+    addParam(name: string, value: string): void;
+    
     addToken(): GlideURL;
-    deleteParam(name): void;
-    addEncodedString(s): void;
+    
+    deleteParam(name: string): void;
+    
+    addEncodedString(s: string): void;
+    
     getQueryString(additionalParams: { [key: string]: string; }): string;
+
+    /**
+     * Get the entire context path and query string parameters as a single URI.
+     * @param {{ [key: string]: string; }} additionalParams - A name-value pair object that contains parameters that are added to this URL request only. These additional parameters are not saved to the GlideURL object.
+     * @return {string}  {string}
+     * @memberof GlideURL - The GlideURL with the specified additional parameters added to the end.
+     */
     getURL(additionalParams: { [key: string]: string; }): string;
-    setEncode(b): void;
+
+    setEncode(b: any): void;
+    
     static refresh(): void;
 }
 
@@ -1090,18 +1123,86 @@ declare interface AjaxErrorResponse extends Pick<XMLHttpRequest, 'status' | 'sta
     description: string;
     responseJSON?: any;
 }
-declare class GlideAjax {
-    constructor(processor: string, targetURL?: string);
+
+/**
+ * Enables a client script to call server-side code in a script include.
+ * @class GlideAjax
+ */
+declare class GlideAjax extends GlideURL {
+    /**
+     * Creates an instance of GlideAjax.
+     * @param {string} class_name - The name of the server-side class that contains the method you want to execute.
+     * @param {string} [targetURL] - A relative path for the URL.
+     * @memberof GlideAjax
+     */
+    constructor(class_name: string, targetURL?: string);
+
+    /**
+     * Specifies a parameter name and value to be passed to the server-side function associated with this GlideAjax object.
+     * The first call to addParam should be with the parameter sysparm_name and the name of the server-side method you want to call.
+     * The server-side code does not execute until the client script calls getXML() or getXMLAnswer().
+     * @param {string} parm_name - The name of the parameter to pass. (The name must begin with the string 'sysparm_'.)
+     * @param {string} parm_value - The value to assign to parm_name.
+     * @memberof GlideAjax
+     */
     addParam(parm_name: string, parm_value: string): void;
-    getParam(name: string): string;
-    getParams(): { [key: string]: string };
+
+    /**
+     * Retrieves the results from a server-side method called from the client via getXMLWait().
+     * @memberof GlideAjax
+     */
     getAnswer(): void;
+
+    /**
+     * Gets the name of the server script that contains the method to be executed.
+     * @return {string} The name of the server script that contains the method to be executed.
+     * @memberof GlideAjax
+     */
     getProcessor(): string;
-    getURL(): string;
+
+    /**
+     * Sends the server a request to execute the method and parameters associated with this GlideAjax object.
+     * @param {GlideAjaxResultCallback<XMLHttpRequest>} callback - The callback function to process the results returned by the server.
+     * @memberof GlideAjax
+     */
     getXML(callback: GlideAjaxResultCallback<XMLHttpRequest>): void;
-    getXMLAnswer(callback: GlideAjaxResultCallback<string>): void;
+
+    /**
+     * Calls the processor asynchronously and gets the answer element of the response in XML format.
+     * @param {GlideAjaxResultCallback<string>} callback - Callback function. The function receives the answer element of the response in XML format as an argument.
+     * @param {{ [key: string]: string; }} [additionalParam] - Name-value pair of additional parameters
+     * @memberof GlideAjax
+     */
+    getXMLAnswer(callback: GlideAjaxResultCallback<string>, additionalParam?: { [key: string]: string; }): void;
+
+    /**
+     * Calls the processor asynchronously and gets the answer element of the response in XML format.
+     * @template T - Type type of the additional parameter.
+     * @param {GlideAjaxAnswerCallback<T>} callback - Callback function. The function receives the answer element of the response in XML format as an argument.
+     * @param {({ [key: string]: string; } | null)} additionalParam - Name-value pair of additional parameters or null for no additional parameters.
+     * @param {T} responseParam - Second argument for the callback function.
+     * @memberof GlideAjax
+     */
+    getXMLAnswer<T>(callback: GlideAjaxAnswerCallback<T>, additionalParam: { [key: string]: string; } | null, responseParam: T): void;
+
+    /**
+     * Sends the server a request to execute the method and parameters associated with this GlideAjax object.
+     * @memberof GlideAjax
+     */
     getXMLWait(): void;
+
+    /**
+     * Sets the callback function to handle error responses.
+     * @param {GlideAjaxResultCallback<AjaxErrorResponse>} callback - The error handling callback function.
+     * @memberof GlideAjax
+     */
     setErrorCallback(callback: GlideAjaxResultCallback<AjaxErrorResponse>): void;
+
+    /**
+     * Sets the name of the server script that contains the method to be executed.
+     * @param {string} serverScript - The name of the server-side class that contains the method you want to execute.
+     * @memberof GlideAjax
+     */
     setProcessor(serverScript: string): void;
 }
 
