@@ -1,0 +1,71 @@
+{
+	"Async GlideRecord Query": {
+		"scope": "typescript",
+		"prefix": "sn-client-query",
+		"body": [
+			"function on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}RecordLoaded(${1:gr}: GlideRecord) {",
+			"    if ($1.next()) {",
+			"        var ${2:colName}: string = $1.getValue('$2');",
+			"    }",
+			"}",
+			"var gr: GlideRecord = new GlideRecord('${2:table_name}');",
+			"gr.addQuery ('${2:col_name}', ${3:g_user.userID});",
+			"gr.query(on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}RecordLoaded);"
+		],
+		"description": "Asynchronous ServiceNow server-side GlideRecord query"
+	},
+	"Ajax API Call": {
+		"scope": "typescript",
+		"prefix": "sn-client-ajax",
+		"body": [
+			"function on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}${2/\\s*(\\S)(.*)/${1:/upcase}$2/}Response(response: XMLHttpRequest) {",                                
+			"    if (typeof response.responseXML === 'object' && response.responseXML !== null) {",
+			"        var ${3:responseAttribute} = response.responseXML.documentElement.getAttribute(\"$3\");", 
+			"        alert($3);",
+			"    }",
+			"}",
+			"",
+			"var ga: GlideAjax = new GlideAjax('${1:ServerClass}');",
+			"ga.addParam('sysparm_name', '${2:methodName}');",
+			"ga.getXML(on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}${2/\\s*(\\S)(.*)/${1:/upcase}$2/}Response);"
+		  ],
+		"description": "Asynchronously call method on server-side script include"
+	},
+	"Ajax API Call (1 arg)": {
+		"scope": "typescript",
+		"prefix": "sn-client-ajax-1",
+		"body": [
+			"function on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}${2/\\s*(\\S)(.*)/${1:/upcase}$2/}Response(response: XMLHttpRequest) {",                                
+			"    if (typeof response.responseXML === 'object' && response.responseXML !== null) {",
+			"        var ${5:responseAttribute} = response.responseXML.documentElement.getAttribute(\"$5\");", 
+			"        alert($5);",
+			"    }",
+			"}",
+			"",
+			"var ga: GlideAjax = new GlideAjax('${1:ServerClass}');",
+			"ga.addParam('sysparm_name', '${2:methodName}');",
+			"ga.addParam('sysparm_${3:arg_name}, ${4:\"\"});",
+			"ga.getXML(on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}${2/\\s*(\\S)(.*)/${1:/upcase}$2/}Response);"
+		  ],
+		"description": "Asynchronously call method with 1 argument on server-side script include"
+	},
+	"Ajax API Call (2 args)": {
+		"scope": "typescript",
+		"prefix": "sn-client-ajax-2",
+		"body": [
+			"function on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}${2/\\s*(\\S)(.*)/${1:/upcase}$2/}Response(response: XMLHttpRequest) {",                                
+			"    if (typeof response.responseXML === 'object' && response.responseXML !== null) {",
+			"        var ${7:responseAttribute} = response.responseXML.documentElement.getAttribute(\"$7\");", 
+			"        alert($7);",
+			"    }",
+			"}",
+			"",
+			"var ga: GlideAjax = new GlideAjax('${1:ServerClass}');",
+			"ga.addParam('sysparm_name', '${2:methodName}');",
+			"ga.addParam('sysparm_${3:arg_name_1}, ${4:\"\"});",
+			"ga.addParam('sysparm_${5:arg_name_2}, ${6:\"\"});",
+			"ga.getXML(on${1/\\s*(\\S)(.*)/${1:/upcase}$2/}${2/\\s*(\\S)(.*)/${1:/upcase}$2/}Response);"
+		  ],
+		"description": "Asynchronously call method with 2 arguments on server-side script include"
+	}
+}
