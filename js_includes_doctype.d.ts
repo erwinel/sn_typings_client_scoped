@@ -1,3 +1,5 @@
+/// <reference path="./node_modules/@types/jquery/index.d.ts" />
+// <reference path="./node_modules/@types/angular/index.d.ts" />
 /* ServiceNow Resource: /scripts/doctype/js_includes_doctype.js */
 
 /* ServiceNow Resource: /scripts/doctype/functions_bootstrap14.js */
@@ -22,9 +24,9 @@ declare var isTouchDevice: boolean;
 /**
  * Add listener for top window render event.
  *
- * @param {TimerHandler} cb Callback to invoke
+ * @param {string | Function} cb Callback to invoke
  */
-declare function addTopRenderEvent(cb: TimerHandler): void;
+declare function addTopRenderEvent(cb: string | Function): void;
 /**
  * Checks whether render event listener is registered.
  *
@@ -32,10 +34,10 @@ declare function addTopRenderEvent(cb: TimerHandler): void;
  * @returns {boolean} true if listener is registered; otherwise, false.
  */
 declare function isRenderEventRegistered(func: Function): boolean;
-declare function addRenderEvent(cb: TimerHandler): void;
-declare function addLoadEvent(cb: TimerHandler): void;
-declare function addLateLoadEvent(cb: TimerHandler): void;
-declare function addAfterPageLoadedEvent(cb: TimerHandler): void;
+declare function addRenderEvent(cb: string | Function): void;
+declare function addLoadEvent(cb: string | Function): void;
+declare function addLateLoadEvent(cb: string | Function): void;
+declare function addAfterPageLoadedEvent(cb: string | Function): void;
 declare function addUnloadEvent(cb: EventListener): void;
 declare function getTopWindow(): Window;
 declare function isTopWindow(): boolean;

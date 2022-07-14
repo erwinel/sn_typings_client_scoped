@@ -11,12 +11,14 @@
     "type": "git",
     "url": "git+https://github.com/erwinel/sn_typings_client_scoped.git"
   },
-  "typeScriptVersion": "2.7",
   "types": "index.d.ts",
   "devDependencies": {
-    "@types/angularjs": "^1.5.14-alpha",
-    "@types/jquery": "^3.3.33",
-    "@types/node": "^8.10.59",
+    "@popperjs/core": "^2.11.5",
+    "@types/angular": "^1.8.4",
+    "@types/bootstrap": "^5.1.12",
+    "@types/jquery": "^3.5.14",
+    "package": "^1.0.1",
     "typescript": "^3.2.2"
-  }
+  },
+  "dependencies": {}
 }
