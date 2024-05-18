@@ -61,6 +61,9 @@ declare enum GlideFormFlashDuration {
 /**
  * The current user.
  */
-declare var g_user: GlideUser;
+declare const g_user: GlideUser;
 
-declare var g_navigation: GlideNavigation;
+/**
+ * Navigation API.
+ */
+declare const g_navigation: GlideNavigation;
