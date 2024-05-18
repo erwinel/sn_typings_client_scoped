@@ -27,6 +27,7 @@ declare var isTouchDevice: boolean;
  * @param {string | Function} cb Callback to invoke
  */
 declare function addTopRenderEvent(cb: string | Function): void;
+
 /**
  * Checks whether render event listener is registered.
  *
@@ -45,6 +46,7 @@ declare function inFrame(): boolean;
 declare function getMainWindow(): Window;
 declare function getMainFormWindow(): Window;
 declare function getNavWindow(): Window;
+
 /**
  * Writes to the log.
  *
@@ -140,12 +142,14 @@ declare class GlideRecord {
      * @memberof GlideRecord
      */
     addOrderBy(column: string): void;
+
     /**
      * Adds a filter to return records using an encoded query string.
      * @param {QueryOperator} query - An encoded query string.
      * @memberof GlideRecord
      */
     addQuery(query: string): void;
+
     /**
      * Adds a query to return records where the specified field name is equal to a specified value (or is in a list of values).
      * @param {string} name - Name of the field to check.
@@ -153,6 +157,7 @@ declare class GlideRecord {
      * @memberof GlideRecord
      */
     addQuery(name: string, value: any): void;
+
     /**
      * Adds a filter to return records where the field meets the specified condition (field, operator, value).
      * @param {string} name - Name of the field to check.
@@ -161,6 +166,7 @@ declare class GlideRecord {
      * @memberof GlideRecord
      */
     addQuery(name: string, operator: QueryOperator, value: any): void;
+
     /**
      * Deletes the current record.
      * @param {GlideAjaxResultCallback<boolean>} [responseFunction] - The response function for the Ajax callback.
@@ -168,6 +174,7 @@ declare class GlideRecord {
      * @memberof GlideRecord
      */
     deleteRecord(responseFunction?: GlideAjaxResultCallback<boolean>): boolean;
+
     /**
      * Executes a GlideRecord query for a record with the specified sys_id.
      * @param {string} sys_id - The sys_id of the record to be found.
@@ -176,6 +183,7 @@ declare class GlideRecord {
      * @description This method is expected to be used to query for single records, so a next operation is performed before returning.
      */
     get(sys_id: string): boolean;
+
     /**
      * Gets the value of the specified column.
      * @param {string} column - The column name.
@@ -183,70 +191,82 @@ declare class GlideRecord {
      * @memberof GlideRecord
      */
     getValue(column: string): string;
+
     /**
      * Retrieves the query condition of the current result set as an encoded query string.
      * @returns {string}
      * @memberof GlideRecord
      */
     getEncodedQuery(): string;
+
     /**
      * Returns the limit for records to be returned by the GlideRecord query.
      * @returns {number}
      * @memberof GlideRecord
      */
     getLimit(): number;
+
     /**
      * Retrieves the name of the table associated with this GlideRecord.
      * @returns {string}
      * @memberof GlideRecord
      */
     getTableName(): string;
+
     /**
      * Determines if there are any more records in the GlideRecord.
      * @returns {boolean} True if there are more records in the query set.
      * @memberof GlideRecord
      */
     hasNext(): boolean;
+
     /**
      * Initialize the GlideRecord as a new record.
      * @memberof GlideRecord
      */
     initialize(): void;
+
     /**
      * Inserts a new record using the field values that have been set for the current record.
      * @returns {string | null} - The sys_id of the inserted record, or null if the record was not inserted.
      * @memberof GlideRecord
      */
     insert(): string | null;
+
     /**
      * Inserts a new record using the field values that have been set for the current record.
      * @param {GlideAjaxResultCallback<string>} responseFunction - The response function.
      * @memberof GlideRecord
      */
     insert(responseFunction: GlideAjaxResultCallback<string | null>): void;
+
     /**
      * Moves to the next record in the GlideRecord.
      * @returns {boolean} False if there are no more records in the query set.
      * @memberof GlideRecord
      */
     next(): boolean;
+
     /**
      * Specifies an orderBy column. May be called more than once to order by multiple columns.
      * @param {string} column - The column name to be used to order the result set.
      * @memberof GlideRecord
      */
     orderBy(column: string): void;
+
     /**
      * Runs the query against the table based on the addQuery() filter. This queries the GlideRecord table as well as any references of the table.
      * @memberof GlideRecord
      */
     query(): void;
+
     /**
      * Runs the query against the table based on the addQuery() filter. This queries the GlideRecord table as well as any references of the table.
      * @param {Function} responseFunction - The response function for the Ajax callback.
      * @memberof GlideRecord
      */
     query(responseFunction: Function): void;
+
     /**
      * Runs the query against the table based on the addQuery() filter. This queries the GlideRecord table as well as any references of the table.
      * @param {string} name - The response function for the Ajax callback.
@@ -255,6 +275,7 @@ declare class GlideRecord {
      * @memberof GlideRecord
      */
     query(name: string, value: string, responseFunction?: Function): void;
+
     /**
      * Sets the limit for how many records are in the GlideRecord.
      * @param {number} [maxQuery] - The limit for the number of records to retrieve.
@@ -288,18 +309,21 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     addDecoration(fieldName: string, icon: DecorationFontIcon, title: string, color?: string): void;
+
     /**
      * Displays the error message at the top of the form.
      * @param {string} message - The message to display.
      * @memberof GlideForm
      */
     addErrorMessage(message: string): void;
+
     /**
      * Adds an informational message to the top of the form.
      * @param {string} message - The message to display.
      * @memberof GlideForm
      */
     addInfoMessage(message: string): void;
+
     /**
      * Adds a choice to the end of a choice list field.
      * @param {string} fieldName - The field name.
@@ -309,33 +333,39 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     addOption(fieldName: string, choiceValue: string, choiceLabel: string, choiceIndex?: number): void;
+
     /**
      * Removes all informational and error messages from the top of the form.
      * @memberof GlideForm
      */
     clearMessages(): void;
+
     /**
      * Removes all options from the choice list.
      * @param {string} fieldName - The field name.
      * @memberof GlideForm
      */
     clearOptions(fieldName: string): void;
+
     /**
      * Removes any value(s) from the field.
      * @param {string} fieldName - The field name.
      * @memberof GlideForm
      */
     clearValue(fieldName: string): void;
+
     /**
      * Prevents file attachments from being added.
      * @memberof GlideForm
      */
     disableAttachments(): void;
+
     /**
      * Allows file attachments to be added. Shows the paper clip icon.
      * @memberof GlideForm
      */
     enableAttachments(): void;
+
     /**
      * Used to draw attention to a particular field. Flashes the specified color for a specified duration of time in the specified field.
      * @param {string} fieldName - The field name.
@@ -345,6 +375,7 @@ declare abstract class GlideForm {
      * @description This method is not supported by Service Catalog.
      */
     flash(fieldName: string, color: string, count: GlideFormFlashDuration): void;
+
     /**
      * Returns the most recent action name, or, for a client script, the sys_id of the UI action clicked.
      * @returns {string}
@@ -352,6 +383,7 @@ declare abstract class GlideForm {
      * @description Not available in Wizard client scripts.
      */
     getActionName(): string;
+
     /**
      * Returns a Boolean value for the specified field.
      * @param {string} fieldName - The field name.
@@ -359,6 +391,7 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     getBooleanValue(fieldName: string): boolean;
+
     /**
      * Returns the HTML element for the specified field.
      * @param {string} fieldName - The field name.
@@ -367,6 +400,7 @@ declare abstract class GlideForm {
      * @description Compound fields may contain several HTML elements. This method is generally not necessary as there are built-in methods that use the fields on a form.
      */
     getControl(fieldName: string): HTMLElement;
+
     /**
      * Returns the decimal value of the specified field.
      * @param {string} fieldName - The field name.
@@ -374,6 +408,7 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     getDecimalValue(fieldName: string): string;
+
     /**
      * Returns the HTML element specified by the parameter.
      * @param {string} id -
@@ -383,6 +418,7 @@ declare abstract class GlideForm {
      *  Compound fields may contain several HTML elements. This method is generally not necessary as there are built-in methods that use the fields on a form.
      */
     getElement(id: string): HTMLElement;
+
     /**
      * Returns the HTML element for the form.
      * @returns {HTMLElement}
@@ -390,14 +426,17 @@ declare abstract class GlideForm {
      * @description This method is not available in mobile scripts or Service Portal scripts.
      */
     getFormElement(): HTMLFormElement;
+
     /**
      * Returns the HTML element of the help text for the specified field.
      * @param {string} fieldName - The field name.
      * @returns {HTMLElement}
      * @memberof GlideForm
      * @description This method is applicable to service catalog variables only.
+     * @todo Verify this exists. It is not included in clientAPI.d.ts created with ServiceNow Project Extension.
      */
     getHelpTextControl(fieldName: string): HTMLElement;
+
     /**
      * Returns the integer value of the field.
      * @param {string} fieldName - The field name.
@@ -405,6 +444,7 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     getIntValue(fieldName: string): number;
+
     /**
      * Returns the plain text value of the field label.
      * @param {string} fieldName - The field name.
@@ -412,6 +452,7 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     getLabelOf(fieldName: string): string;
+
     /**
      * Returns the option element for a selected box named fieldName where choiceValue matches the option value.
      * @param {string} fieldName - The field name.
@@ -421,6 +462,7 @@ declare abstract class GlideForm {
      * @description This method does not work on read-only fields.
      */
     getOption(fieldName: string, choiceValue: string): HTMLElement;
+
     /**
      * Returns the GlideRecord for a specified field.
      * @param {string} fieldName - The field name.
@@ -429,6 +471,7 @@ declare abstract class GlideForm {
      * @description This routine runs synchronously and processing halts (causing the browser to appear to hang) while waiting on a server response.
      */
     getReference<T extends GlideRecord>(fieldName: string): T;
+
     /**
      * Asynchronously gets the GlideRecord for a specified field.
      * @param {string} fieldName - The field name.
@@ -436,30 +479,35 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     getReference<T extends GlideRecord>(fieldName: string, callBack: GetGlideRecordCallback<T>): void;
+
     /**
      * Returns all section names, whether visible or not.
      * @returns {string[]}
      * @memberof GlideForm
      */
     getSectionNames(): string[];
+
     /**
      * Returns an array of the form's sections.
      * @returns {HTMLElement[]}
      * @memberof GlideForm
      */
     getSections(): HTMLElement[];
+
     /**
      * Returns the name of the table to which this record belongs.
      * @returns {string}
      * @memberof GlideForm
      */
     getTableName(): string;
+
     /**
      * Returns the sys_id of the record displayed in the form.
      * @returns {string}
      * @memberof GlideForm
      */
     getUniqueValue(): string;
+
     /**
      * Returns the value of the specified field.
      * @param {string} fieldName - The field name.
@@ -467,12 +515,14 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     getValue(fieldName: string): string;
+
     /**
      * Hides all field messages.
      * @param {GlideFormFieldMessageType} [type] - If specified, only messages of this type are hidden.
      * @memberof GlideForm
      */
     hideAllFieldMsgs(GlideFormFieldMessageType?: string): void;
+
     /**
      * Hides the error message placed by showErrorBox().
      * @param {string} fieldName - The field name.
@@ -480,6 +530,7 @@ declare abstract class GlideForm {
      * @description Whenever possible, use hideFieldMsg() rather than this method whenever possible.
      */
     hideErrorBox(fieldName: string): void;
+
     /**
      * Hides messages placed by showFieldMsg().
      * @param {string} fieldName - The field name.
@@ -487,23 +538,28 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     hideFieldMsg(fieldName: string, clearAll?: boolean): void;
+
     /**
      * Hides the specified related list on the form.
      * @param {string} listTableName - Name of the related list. Use the sys_id to hide a list through a relationship.
      * @memberof GlideForm
      */
     hideRelatedList(listTableName: string): void;
+
     /**
      * Hides all related lists on the form.
      * @memberof GlideForm
      */
     hideRelatedLists(): void;
+
     /**
      * Returns true while a live update is being done on the record the form is showing.
      * @returns {boolean}
      * @memberof GlideForm
+     * @todo Verify this exists. It is not included in clientAPI.d.ts created with ServiceNow Project Extension.
      */
     isLiveUpdating(): boolean;
+
     /**
      * Returns true if the field is mandatory.
      * @param {string} fieldName - The field name.
@@ -511,12 +567,14 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     isMandatory(fieldName: string): boolean;
+
     /**
      * Returns true if the record has never been saved.
      * @returns {boolean}
      * @memberof GlideForm
      */
     isNewRecord(): boolean;
+
     /**
      * Returns true if the section is visible.
      * @param {string} sectionName - The name of the section.
@@ -525,19 +583,14 @@ declare abstract class GlideForm {
      * @description The section name is lower case with an underscore replacing the first space in the name, and with the remaining spaces being removed, for example "Section Four is Here" becomes "section_fourishere".
      */
     isSectionVisible(sectionName: string): boolean;
+
     /**
      * You can update a list collector variable.
      * @param {string} fieldName - Name of the slush bucket.
      * @memberof GlideForm
      */
     refreshSlushbucket(fieldName: string): void;
-    /**
-     * Removes the specified option from the choice list.
-     * @param {string} fieldName - The field name.
-     * @param {string} choiceValue - The value stored in the database. This is not the label.
-     * @memberof GlideForm
-     */
-    removeOption(fieldName: string, choiceValue: string): void;
+
     /**
      * Removes the icon from the specified field that matches the icon and title.
      * @param {string} fieldName - The field name.
@@ -548,11 +601,21 @@ declare abstract class GlideForm {
      * @description This method is not supported by Service Catalog.
      */
     removeDecoration(fieldName: string, icon: DecorationFontIcon, title: string, color?: string): void;
+
+    /**
+     * Removes the specified option from the choice list.
+     * @param {string} fieldName - The field name.
+     * @param {string} choiceValue - The value stored in the database. This is not the label.
+     * @memberof GlideForm
+     */
+    removeOption(fieldName: string, choiceValue: string): void;
+
     /**
      * Saves the record without navigating away (update and stay).
      * @memberof GlideForm
      */
     save(): void;
+
     /**
      * Makes the specified field available or unavailable.
      * @param {string} fieldName - The field name.
@@ -560,6 +623,7 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     setDisabled(fieldName: string, disable: boolean): void;
+
     /**
      * Displays or hides a field.
      * @param {string} fieldName - The field name.
@@ -568,6 +632,7 @@ declare abstract class GlideForm {
      * @description This method cannot hide a mandatory field with no value.
      */
     setDisplay(fieldName: string, display: boolean): void;
+
     /**
      * Sets the plain text value of the field label.
      * @param {string} fieldName - The field name.
@@ -576,6 +641,7 @@ declare abstract class GlideForm {
      * @description This method is not supported by Service Catalog.
      */
     setLabelOf(fieldName: string, label: string): void;
+
     /**
      * Makes the specified field mandatory.
      * @param {string} fieldName - The field name.
@@ -584,6 +650,7 @@ declare abstract class GlideForm {
      * @description Whenever possible, use a UI policy instead of this method.
      */
     setMandatory(fieldName: string, mandatory: boolean): void;
+
     /**
      * Makes the specified field read only or editable.
      * @param {string} fieldName - The field name.
@@ -592,6 +659,16 @@ declare abstract class GlideForm {
      * @description Whenever possible, use a UI policy instead of this method.
      */
     setReadOnly(fieldName: string, readOnly: boolean): void;
+
+    /**
+     * Shows or hides a section.
+     * @param {string} sectionName - The name of the section.
+     * @param {boolean} display - When true shows the section. When false hides the section.
+     * @memberof GlideForm
+     * @description The section name is lower case with an underscore replacing the first space in the name, and with the remaining spaces being removed, for example "Section Four is Here" becomes "section_fourishere".
+     */
+    setSectionDisplay(sectionName: string, display: boolean): void;
+
     /**
      * Sets the value of a field.
      * @param {string} fieldName - The field name.
@@ -602,6 +679,7 @@ declare abstract class GlideForm {
      *  To improve performance by preventing a round trip, use the displayValue parameter.
      */
     setValue(fieldName: string, value: string | number): void;
+
     /**
      * Sets the value of a field.
      * @param {string} fieldName - The field name.
@@ -612,14 +690,7 @@ declare abstract class GlideForm {
      *  When defining a value in a choice list, be sure to use number value rather than the label.
      */
     setValue(fieldName: string, value: string | number, displayValue: string): void;
-    /**
-     * Shows or hides a section.
-     * @param {string} sectionName - The name of the section.
-     * @param {boolean} display - When true shows the section. When false hides the section.
-     * @memberof GlideForm
-     * @description The section name is lower case with an underscore replacing the first space in the name, and with the remaining spaces being removed, for example "Section Four is Here" becomes "section_fourishere".
-     */
-    setSectionDisplay(sectionName: string, display: boolean): void;
+
     /**
      * Displays or hides the field.
      * @param {string} fieldName - The field name.
@@ -629,6 +700,7 @@ declare abstract class GlideForm {
      *  Use UI Policy rather than this method whenever possible.
      */
     setVisible(fieldName: string, display: boolean): void;
+
     /**
      * Displays an error message under the specified form field (either a control object or the name of the field).
      * @param {string} name - Name of the field or control.
@@ -637,6 +709,7 @@ declare abstract class GlideForm {
      * @memberof GlideForm
      */
     showErrorBox(name: string, message: string, scrollForm?: boolean): void;
+
     /**
      * Displays either an informational or error message under the specified form field (either a control object or the name of the field).
      * @param {string} field - The field name.
@@ -648,17 +721,20 @@ declare abstract class GlideForm {
      *  The showErrorBox() method is a shorthand method that does not require the type parameter.
      */
     showFieldMsg(field: string, message: string, type: GlideFormFieldMessageType, scrollForm?: boolean): void;
+
     /**
      * Displays the specified related list on the form.
      * @param {string} listTableName - Name of the related list.
      * @memberof GlideForm
      */
     showRelatedList(listTableName: string): void;
+
     /**
      * Displays all the form's related lists.
      * @memberof GlideForm
      */
     showRelatedLists(): void;
+
     /**
      * Saves the record.
      * @param {string} [verb] - Name of UI action to be performed. The action name must be for a visible form button.
@@ -680,24 +756,28 @@ declare class GlideUser {
      * @memberof GlideUser
      */
     readonly firstName: string;
+
     /**
      * Returns the current user's last name.
      * @type {string}
      * @memberof GlideUser
      */
     readonly lastName: string;
+
     /**
      * Returns the sys_id of the current user.
      * @type {string}
      * @memberof GlideUser
      */
     readonly userID: string;
+
     /**
      * Returns the current user's username.
      * @type {string}
      * @memberof GlideUser
      */
     readonly userName: string;
+
     /**
      * Returns a session client value previously set with putClientData().
      * @param {string} key - Name of the client data to retrieve.
@@ -705,12 +785,14 @@ declare class GlideUser {
      * @memberof GlideUser
      */
     getClientData(key: string): string;
+
     /**
      * Returns the first and last name of the current user.
      * @returns {string}
      * @memberof GlideUser
      */
     getFullName(): string;
+
     /**
      * Returns true if the current user has the specified or admin role.
      * @param {string} role - Role to check.
@@ -719,6 +801,7 @@ declare class GlideUser {
      * @memberof GlideUser
      */
     hasRole(role: string, includeDefaults?: boolean): boolean;
+
     /**
      * Returns true only if the current user has the specified role.
      * @param {string} role - Role to check.
@@ -727,6 +810,7 @@ declare class GlideUser {
      * @memberof GlideUser
      */
     hasRoleExactly(role: string, includeDefaults?: boolean): boolean;
+
     /**
      * Returns true if the current user has at least one of the specified roles or has the admin role.
      * @param {string} role - Comma-separated list of roles to check.
@@ -735,6 +819,7 @@ declare class GlideUser {
      * @memberof GlideUser
      */
     hasRoleFromList(role: string, includeDefaults?: boolean): boolean;
+
     /**
      * Returns true if the current user has any role.
      * @param {boolean} [includeDefaults] - Flag that indicates whether to include default roles, such as snc_internal and snc_external, in the request.

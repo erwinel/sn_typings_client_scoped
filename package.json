@@ -13,12 +13,13 @@
   },
   "types": "dist/index.d.ts",
   "devDependencies": {
-    "@popperjs/core": "^2.11.5",
-    "@types/angular": "^1.8.4",
-    "@types/bootstrap": "^5.1.12",
-    "@types/jquery": "^3.5.14",
+    "@popperjs/core": "^2.11.8",
+    "@types/angular": "^1.8.9",
+    "@types/bootstrap": "^5.2.10",
+    "@types/jquery": "^3.5.30",
+    "@types/typescript": "^2.0.0",
     "package": "^1.0.1",
-    "typedoc": "^0.23.14",
-    "typescript": "^4.8.3"
+    "typedoc": "^0.23.28",
+    "typescript": "^4.9.5"
   }
 }
