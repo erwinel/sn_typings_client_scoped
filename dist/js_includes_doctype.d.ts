@@ -1302,3 +1302,8 @@ declare class GlideAjaxForm extends GlideAjax {
 }
 
 declare function gel(id: string): HTMLElement | null | undefined;
+
+declare interface HtmlActionElement extends HTMLElement {
+    enable(): void;
+    disable(): void;
+}
