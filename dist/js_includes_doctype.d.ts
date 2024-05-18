@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@types/jquery/index.d.ts" />
+// <reference path="../node_modules/@types/jquery/index.d.ts" />
 // <reference path="./node_modules/@types/angular/index.d.ts" />
 /* ServiceNow Resource: /scripts/doctype/js_includes_doctype.js */
 
