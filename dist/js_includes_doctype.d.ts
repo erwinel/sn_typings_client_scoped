@@ -1300,3 +1300,5 @@ declare class GlideAjaxForm extends GlideAjax {
     getPreferences(): { [key: string]: any; };
     getSysparmValue(): string;
 }
+
+declare function gel(id: string): HTMLElement | null | undefined;
